@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '') }}</title>
+    <title>{{ config('app.name', 'Royal') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -113,6 +113,18 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <a href="{{route('profile.edit',['id' => 1])}}"> Edit Church Profile</a>
+                    
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{route('finance.create')}}"> Add Financial Transaction</a>
+                    </li>
+
+                    <li class="list-group-item">
+                        <a href="{{route('finance')}}"> Financial Transactions</a>
+                    </li>
+
                     
                 </ul>
                

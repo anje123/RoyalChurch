@@ -38,7 +38,36 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     'as' => 'profile.update'
    ]);
 
+   Route::get('/admin/finance/create', [
+    'uses' => 'ProfileController@finance',
+    'as' => 'finance.create'
+   ]);
   
+   Route::post('/admin/finance', [
+    'uses' => 'ProfileController@finance_save',
+    'as' => 'finance.save'
+   ]);
+
+   Route::get('/admin/finances', [
+    'uses' => 'ProfileController@get_finance',
+    'as' => 'finance'
+   ]);
+   
+   Route::delete('/admin/finance/delete/{id}', [
+       'uses' => 'ProfileController@finance_delete',
+       'as' => 'finance.delete'
+   ]);
+
+
+   Route::get('/admin/finance/edit/{id}', [
+    'uses' => 'ProfileController@finance_edit',
+    'as' => 'finance.edit'
+   ]);
+
+   Route::post('/admin/finance/update/{id}',  [
+    'uses' => 'ProfileController@finance_update',
+    'as' => 'finance.update'
+   ]);
 
 
 });
