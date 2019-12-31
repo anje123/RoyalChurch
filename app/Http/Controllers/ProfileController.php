@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\Finance;
+use App\Expense;
+use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 
 class ProfileController extends Controller
@@ -47,8 +49,8 @@ class ProfileController extends Controller
     public function finance_save (Request $request){
         $this->validate($request,[
             'event' => 'required',
-            'date' => 'required',
-            'amount' => 'required',
+            'date' => 'required|date_format:d-m-Y',
+            'amount' => 'required|numeric',
         ]);
        
         Finance::create([
@@ -65,8 +67,11 @@ class ProfileController extends Controller
 
     public function get_finance (){
         $sum = Finance::all()->sum('amount');
+        $balance = Finance::all()->sum('amount') - Expense::all()->sum('amount');
+
         return view('admin.profile.finances')->with('finances',Finance::all())
-                                             ->with('sum', $sum);
+                                             ->with('sum', $sum)
+                                             ->with('balance',$balance);
     }
 
     public function finance_delete($id)
@@ -88,8 +93,8 @@ class ProfileController extends Controller
 
         $this->validate($request,[
             'event' => 'required',
-            'date' => 'required',
-            'amount' => 'required|integer',
+            'date' => 'required|date_format:d-m-Y',
+            'amount' => 'required|numeric',
         ]);
 
 
@@ -104,5 +109,16 @@ class ProfileController extends Controller
 
         return redirect()->route('finance');
 
+    }
+
+    public function finance_pdf()
+    {
+        $finances = Finance::all();
+        $sum = Finance::all()->sum('amount');
+        $pdf = PDF::loadView('admin.profile.pdf',compact('finances','sum'));
+        return $pdf->download('income_transaction.pdf');
+        Session::flash('success','DOWNLOADED SUCCESSFULLY');
+
+        return redirect()->route('finance');
     }
 }

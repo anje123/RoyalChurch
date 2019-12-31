@@ -5,16 +5,16 @@
 @include('admin.includes.error')
     <div class="panel panel-default">
         <div class="panel-heading">
-            Record Income
+            Edit Income
         </div>
 
         <div class="panel-body">
-            <form action="{{ route('finance.update',['id' => 2]) }}" method="post" enctype="multipart/form-data"   >
+            <form action="{{ route('finance.update',['id' => $finance->id]) }}" method="post" enctype="multipart/form-data"   >
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label for="date">Date</label>
-                    <h6 for="" class="pull-right">eg . 19th-June-2019</h6>
+                    <h6 for="" class="pull-right">eg . 19-11-2019</h6>
 
                 <input type="text" class="form-control" value="{{$finance->date}}"  name="date" id="">
                 </div>

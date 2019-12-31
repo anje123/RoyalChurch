@@ -16,7 +16,7 @@
                     Date
                 </th>
                 <th>
-                    Income Title
+                    Expense Title
                 </th>
                 <th>
                     Amount
@@ -30,23 +30,23 @@
             </thead>
           
             <tbody>
-            @foreach ($finances as $finance)
+            @foreach ($expenses as $expense)
                 <tr>
-                    <td>{{ $finance->date }}</td>
-                    <td>{{ $finance->event }}</td>
+                    <td>{{ $expense->date }}</td>
+                    <td>{{ $expense->event }}</td>
                     
-                    <td> &#8358 {{ number_format($finance->amount, 2, '.', ',') }}</td>
+                    <td> &#8358 {{ number_format($expense->amount, 2, '.', ',') }}</td>
 
 
                 
                     <td>
-                    <a href="{{route('finance.edit',['id' => $finance->id])}}"  class="btn btn-xs btn-info">
+                    <a href="{{route('expense.edit',['id' => $expense->id])}}"  class="btn btn-xs btn-info">
                             Edit
                         </a>
                     </td>
 
                     
-                <form action="{{route('finance.delete',['id' => $finance->id])}}"  method="post">
+                <form action="{{route('expense.delete',['id' => $expense->id])}}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <td>
@@ -67,11 +67,10 @@
 </div>
 
 <div class="panel-footer">
-     <h5>TOTAL INCOME: &#8358 {{ number_format($sum, 2, '.', ',') }}</h5>
+     <h5>TOTAL EXPENSES: &#8358 {{ number_format($sum, 2, '.', ',') }}</h5>
      <h5>APPROXIMATE ACCOUNT BALANCE: &#8358 {{ number_format($balance, 2, '.', ',') }}</h5>
-
      <br>
-     <a href="{{route('finance.pdf')}}"  class="btn btn-success">
+     <a href="{{route('expense.pdf')}}"  class="btn btn-success">
         DOWNLOAD TABLE
     </a>
 </div>

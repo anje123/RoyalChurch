@@ -15,7 +15,7 @@
                         Date
                     </th>
                     <th>
-                        Income Title
+                        Expense Title
                     </th>
                     <th>
                         Amount
@@ -25,12 +25,12 @@
                 </thead>
               
                 <tbody>
-                @foreach ($finances as $finance)
+                @foreach ($expenses as $expense)
                     <tr>
-                        <td>{{ $finance->date }}</td>
-                        <td>{{ $finance->event }}</td>
+                        <td>{{ $expense->date }}</td>
+                        <td>{{ $expense->event }}</td>
                         
-                        <td> N {{ number_format($finance->amount, 2, '.', ',') }}</td>
+                        <td> N {{ number_format($expense->amount, 2, '.', ',') }}</td>
     
     
                     
@@ -44,7 +44,7 @@
             </table>
        
 <div class="container">
-        <h4>TOTAL INCOME: N {{ number_format($sum, 2, '.', ',') }}</h4>
+        <h4>TOTAL EXPENSES: N {{ number_format($sum, 2, '.', ',') }}</h4>
     
 </div>        
     

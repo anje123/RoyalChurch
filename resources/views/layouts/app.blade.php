@@ -21,9 +21,9 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body style="background-image: url('{{ asset('asset/water.jpg')}}');">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top" style="background-image: url('{{ asset('asset/water.jpg')}}');">
             <div class="container">
                 <div class="navbar-header">
 
@@ -36,7 +36,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" style="color:white" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -48,16 +48,16 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul style="color:white" class="nav navbar-nav navbar-right" >
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a style="color:white" href="{{ url('/login') }}">Login</a></li>
+                            <li><a style="color:white" href="{{ url('/register') }}">Register</a></li>
 
                             
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a style="color:white" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -87,13 +87,13 @@
                <div class="col-lg-4">
                 <ul class="list-group">
                    <li class="list-group-item">
-                      <a href="/admin/home">Home</a>
+                      <a class="mb-0" href="/admin/home">Home</a>
                    </li>
                 </ul>
                 <ul class="list-group">
 
                 <li class="list-group-item">
-                    <a href="{{route('event.create')}}"> Create Events</a>
+                    <a class="mb-0" href="{{route('event.create')}}"> Create Event</a>
                 </li>
                     <li class="list-group-item">
                        <a href="{{route('event.index')}}">Events</a>
@@ -118,14 +118,23 @@
 
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a href="{{route('finance.create')}}"> Add Financial Transaction</a>
+                        <a href="{{route('finance.create')}}"> Add Church Income</a>
                     </li>
 
                     <li class="list-group-item">
-                        <a href="{{route('finance')}}"> Financial Transactions</a>
+                        <a href="{{route('finance')}}"> Church Income</a>
+                    </li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{route('expense.create')}}"> Add Church Expense</a>
                     </li>
 
-                    
+                    <li class="list-group-item">
+                        <a href="{{route('expense.index')}}"> Church Expenses</a>
+                    </li>
+  
                 </ul>
                
                </div>
