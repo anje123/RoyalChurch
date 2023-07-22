@@ -8,7 +8,7 @@
         "php": ">=5.6.4",
         "barryvdh/laravel-dompdf": "0.8.2",
         "doctrine/inflector": "1.1.x",
-        "laravel/framework": "5.3.*"
+        "laravel/framework": "5.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
